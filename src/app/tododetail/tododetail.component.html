@@ -1,0 +1,67 @@
+<h1 class="title" igxListLineTitle>{{titleTodo}}</h1>
+
+<igx-list>
+    <igx-list-item class="item card" *ngFor="let todo of todoDetail">
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="titledetail" igxListLineTitle>{{todo.title}}</h4>
+            <div class="dropdown">
+                <button class="btn " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    ...
+                </button>
+                <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> -->
+                    <button class="dropdown-item" data-toggle="modal" (click)="passData(todo.id,todo.title)"
+                        data-target="#edit">Edit</button>
+                    <button class="dropdown-item" (click)="deleteTodoDetail(todo.id)">Delete</button>
+                <!-- </div> -->
+            </div>
+        </div>
+    </igx-list-item>
+</igx-list>
+
+<!-- modal edit -->
+<div class="modal fade" id="addTodo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Title todo detail </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" [(ngModel)]="titleTodoDetail" name="titleTodoDetail" class="form-control"
+                    aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addTodoDetail()">Save
+                    changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Title todo detail </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" [(ngModel)]="titleTodoDetail" name="titleTodoDetail" class="form-control"
+                    aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{titlePass}}">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editTodoDetail()">Save
+                    changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-success ml-4 mt-4" data-toggle="modal" data-target="#addTodo">Add Todo Detail</button>

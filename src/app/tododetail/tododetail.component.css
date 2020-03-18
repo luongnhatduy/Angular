@@ -1,0 +1,14 @@
+.title {
+  font-size: 25px;
+  font-weight: 600;
+  margin-left: 10px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.item {
+  margin: 15px 100px;
+}
+.titledetail {
+  font-size: 16px;
+  margin: 10px;
+}
